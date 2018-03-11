@@ -4,25 +4,40 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.21")
+
 	}
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.gorylenko.gradle-git-properties'
 
+def projectName='cart'
+version = '0.0.1'
 group = 'com.foobaar'
-version = '0.0.1-SNAPSHOT'
+
+jar {
+	baseName = "${projectName}"
+	version = "${version}"
+}
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
 }
 
+springBoot {
+	buildInfo()
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')

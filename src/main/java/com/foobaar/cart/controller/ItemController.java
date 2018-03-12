@@ -20,10 +20,9 @@ public class ItemController {
         this.service = service;
     }
 
-    @RequestMapping(method = GET)
+    @RequestMapping(method = GET, produces = "application/json;charset=UTF-8")
     public ResponseEntity<ItemsResponse> getItems() {
         return ok(service.getItems());
     }
-
 }
 

@@ -11,4 +11,8 @@ public class CartClient {
     public List<CartItem> getCart(final String id) {
         return null;
     }
+
+    public String createCart() {
+        return null;
+    }
 }

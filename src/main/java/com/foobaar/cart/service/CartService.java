@@ -1,6 +1,7 @@
 package com.foobaar.cart.service;
 
 import com.foobaar.cart.client.CartClient;
+import com.foobaar.cart.response.CreateCartResponse;
 import com.foobaar.cart.response.GetCartResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,5 +17,10 @@ public class CartService {
 
     public GetCartResponse getCart(final String id) {
         return new GetCartResponse(id, client.getCart(id));
+    }
+
+    public CreateCartResponse createCart() {
+        String id = client.createCart();
+        return new CreateCartResponse(id);
     }
 }

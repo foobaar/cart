@@ -1,8 +1,13 @@
 package com.foobaar.cart.dao;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.math.BigDecimal;
 
+@Document(collection = "items")
 public class Item {
+    @Id
     private final String id;
     private final String name;
     private final String description;

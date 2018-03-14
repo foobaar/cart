@@ -21,6 +21,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -47,7 +48,8 @@ public class CartControllerIntegrationTest {
         when(mockService.getCart(id)).thenReturn(new GetCartResponse(id, new ArrayList<>()));
 
         mockMvc.perform(get("/cart/" + id))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"));
 
         verify(mockService, times(1)).getCart(id);
         verifyNoMoreInteractions(mockService);

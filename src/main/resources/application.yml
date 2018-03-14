@@ -10,15 +10,3 @@ spring:
       username: ${MONGO_USER:testUser}
       password: ${MONGO_PASSWORD:testPassword}
       database: ${MONGO_DATABASE:testDatabase}
-
----
-spring:
-	profiles: dev
-
----
-spring:
-	profiles: test
-
----
-spring:
-	profiles: prod

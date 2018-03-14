@@ -16,3 +16,8 @@ http://localhost:9200/actuator/health
 http://localhost:9200/actuator/info
 ```
 
+## API docs
+API docs are generated with swagger
+```
+http://localhost:9200/api/swagger-ui.html
+```

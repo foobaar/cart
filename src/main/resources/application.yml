@@ -1,5 +1,5 @@
 server:
-  contextPath: /api
+  servlet.contextPath: /api
   port: 9200
 
 spring:

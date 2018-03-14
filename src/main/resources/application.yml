@@ -1,12 +1,24 @@
 server:
   servlet.contextPath: /api
-  port: 9200
+  port: ${port:9200}
 
 spring:
   data:
     mongodb:
-      host: localhost
-      port: 27017
+      host: ${MONGO_HOST:localhost}
+      port: ${MONGO_PORT:27017}
       username: ${MONGO_USER:testUser}
       password: ${MONGO_PASSWORD:testPassword}
       database: ${MONGO_DATABASE:testDatabase}
+
+---
+spring:
+	profiles: dev
+
+---
+spring:
+	profiles: test
+
+---
+spring:
+	profiles: prod

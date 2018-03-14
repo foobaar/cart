@@ -4,10 +4,16 @@
 
 ## Running locally
 Set the following env variables:
-> MONGO_PASSWORD
+> MONGO_PASSWORD 
+
 > MONGO_USER
 
+> MONGO_PORT defaults to 27017
+
+> MONGO_URL defaults to localhost
+
 To start the app, run the following command:
+
 ```./gradlew clean bootRun```
 
 ## Healthchecks

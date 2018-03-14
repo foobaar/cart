@@ -19,8 +19,6 @@ public class ItemService {
 
     public ItemsResponse getItems() {
         final List<Item> items = client.findAll();
-        System.out.println("IIIIIIIIIIII");
-        System.out.println(items);
         return new ItemsResponse(items);
     }
 }

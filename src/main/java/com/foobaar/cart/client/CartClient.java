@@ -23,7 +23,7 @@ public class CartClient {
         return null;
     }
 
-    public void deleteCart(String id) {
+    public void deleteCart(final String id) {
         repository.deleteById(id);
     }
 }

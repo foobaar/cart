@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import javax.validation.Valid;
+
 import static org.springframework.http.HttpEntity.EMPTY;
 import static org.springframework.http.ResponseEntity.ok;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -35,7 +37,8 @@ public class CartController {
     }
 
     @RequestMapping(value = "/{userId}", method = DELETE)
-    public ResponseEntity<HttpEntity> deleteCart(@PathVariable("userId") final String userId) {
+    public ResponseEntity<HttpEntity> deleteCart(@PathVariable("userId")
+                                                     final String userId) {
         service.deleteCart(userId);
         return ok(EMPTY);
     }
@@ -43,7 +46,7 @@ public class CartController {
     @RequestMapping(method = PUT, consumes = "application/json",
             produces = "application/json;charset=UTF-8")
     public ResponseEntity<UpsertCartResponse> upsertCart(
-            @RequestBody final UpsertCartRequest request) {
+            @Valid @RequestBody final UpsertCartRequest request) {
         return ok(service.upsertCart(request));
     }
 

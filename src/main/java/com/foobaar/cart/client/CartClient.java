@@ -58,7 +58,7 @@ public class CartClient {
     }
 
     private Cart createNewCart(final UpsertCartRequest request) {
-        return new Cart(randomUUID().toString(), new HashSet<>(), request.getUserId());
+        return new Cart(randomUUID().toString(), new HashSet<>(request.getCartItems()), request.getUserId());
     }
 
     private Cart returnOrThrow(final Cart cart, final String userId) {

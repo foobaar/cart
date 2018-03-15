@@ -4,6 +4,7 @@ import com.foobaar.cart.dao.CartItem;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UpsertCartRequest {
@@ -14,7 +15,11 @@ public class UpsertCartRequest {
 
     public UpsertCartRequest(final String userId, final List<CartItem> cartItems) {
         this.userId = userId;
-        this.cartItems = cartItems;
+        if (cartItems == null) {
+            this.cartItems = new ArrayList<>();
+        } else {
+            this.cartItems = cartItems;
+        }
     }
 
     public String getUserId() {

@@ -55,8 +55,11 @@ public class CartClient {
         }
     }
 
-    private Cart updateAndSave(final UpsertCartRequest request, final Cart cart) {
-
+    private Cart updateAndSave(final UpsertCartRequest request, Cart cart) {
+        request.getCartItems().stream().forEach(x -> {
+            cart.getCartItems().add(x);
+        });
+        repository.save(cart);
         return cart;
 
     }

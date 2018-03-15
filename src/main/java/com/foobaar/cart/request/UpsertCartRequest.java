@@ -2,11 +2,13 @@ package com.foobaar.cart.request;
 
 import com.foobaar.cart.dao.CartItem;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class UpsertCartRequest {
     @NotNull
+    @NotEmpty
     private final String userId;
     private final List<CartItem> cartItems;
 

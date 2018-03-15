@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static java.util.UUID.randomUUID;
+
 
 @Component
 public class CartClient {
@@ -35,7 +37,26 @@ public class CartClient {
     }
 
     public Cart upsert(final UpsertCartRequest request) {
-        return null;
+        Cart cart;
+        try {
+            cart =  repository.findByUserId(request.getUserId());
+            if (cart == null) {
+                return repository.save(createNewCart(request));
+            } else {
+                return updateAndSave(request, cart);
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            throw new ApplicationException("MongoOpertationFailed", e);
+        }
+    }
+
+    private Cart updateAndSave(final UpsertCartRequest request, final Cart cart) {
+        return cart;
+    }
+
+    private Cart createNewCart(final UpsertCartRequest request) {
+        return new Cart(randomUUID().toString(), request.getCartItems(), request.getUserId());
     }
 
     private Cart returnOrThrow(final Cart cart, final String userId) {

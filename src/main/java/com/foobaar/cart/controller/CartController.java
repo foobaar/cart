@@ -4,6 +4,8 @@ import com.foobaar.cart.request.UpsertCartRequest;
 import com.foobaar.cart.response.GetCartResponse;
 import com.foobaar.cart.response.UpsertCartResponse;
 import com.foobaar.cart.service.CartService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 @RequestMapping("/cart")
 public class CartController {
     private final CartService service;
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     public CartController(final CartService service) {
@@ -33,12 +36,14 @@ public class CartController {
 
     @RequestMapping(value = "/{userId}", method = GET, produces = "application/json;charset=UTF-8")
     public ResponseEntity<GetCartResponse> getCart(@PathVariable("userId") final String userId) {
+        log.info("CartController.getCart: UserId {}", userId);
         return ok(service.getCart(userId));
     }
 
     @RequestMapping(value = "/{userId}", method = DELETE)
     public ResponseEntity<HttpEntity> deleteCart(@PathVariable("userId")
                                                      final String userId) {
+        log.info("CartController.deleteCart: UserId {}", userId);
         service.deleteCart(userId);
         return ok(EMPTY);
     }
@@ -47,6 +52,7 @@ public class CartController {
             produces = "application/json;charset=UTF-8")
     public ResponseEntity<UpsertCartResponse> upsertCart(
             @Valid @RequestBody final UpsertCartRequest request) {
+        log.info("CartController.upsertCart: UserId {}", request.getUserId());
         return ok(service.upsertCart(request));
     }
 

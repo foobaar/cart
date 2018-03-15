@@ -1,6 +1,6 @@
 package com.foobaar.cart.service;
 
-import com.foobaar.cart.client.ItemRepository;
+import com.foobaar.cart.client.ItemClient;
 import com.foobaar.cart.dao.Item;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,14 +16,14 @@ import static org.mockito.Mockito.verify;
 
 public class ItemServiceTest {
     private ItemService sut;
-    private ItemRepository mockClient;
+    private ItemClient mockClient;
     private Item testItem;
 
     @Before
     public void setUp() {
         testItem = new Item(UUID.randomUUID().toString(), "testItem",
                 "testDescription", ONE, "testSubCategory");
-        mockClient = mock(ItemRepository.class);
+        mockClient = mock(ItemClient.class);
         sut = new ItemService(mockClient);
     }
 

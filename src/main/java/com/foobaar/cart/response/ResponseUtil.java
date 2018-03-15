@@ -1,16 +1,12 @@
 package com.foobaar.cart.response;
 
 import com.foobaar.cart.dao.CartItem;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ResponseUtil {
-    private static final Logger log = LoggerFactory.getLogger(ResponseUtil.class);
     public static BigDecimal getTotalValueOfCart(Set<CartItem> cartItems) {
         BigDecimal totalValue = BigDecimal.ZERO;
         if (cartItems == null || cartItems.isEmpty()) {

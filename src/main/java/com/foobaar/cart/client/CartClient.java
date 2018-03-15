@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
+
 import static java.util.UUID.randomUUID;
 
 
@@ -56,7 +58,7 @@ public class CartClient {
     }
 
     private Cart createNewCart(final UpsertCartRequest request) {
-        return new Cart(randomUUID().toString(), request.getCartItems(), request.getUserId());
+        return new Cart(randomUUID().toString(), new HashSet<>(), request.getUserId());
     }
 
     private Cart returnOrThrow(final Cart cart, final String userId) {

@@ -12,7 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.UUID;
 
 import static org.mockito.Mockito.mock;
@@ -48,7 +48,7 @@ public class CartControllerIntegrationTest {
 
     @Test
     public void getCartHappyPath() throws Exception {
-        when(mockService.getCart(id)).thenReturn(new GetCartResponse(id, new ArrayList<>()));
+        when(mockService.getCart(id)).thenReturn(new GetCartResponse(id, new HashSet<>()));
 
         mockMvc.perform(get("/cart/" + id))
                 .andExpect(status().isOk())

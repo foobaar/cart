@@ -7,6 +7,7 @@ import com.foobaar.cart.dao.Item;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashSet;
 import java.util.UUID;
 
 import static java.math.BigDecimal.ONE;
@@ -35,7 +36,7 @@ public class CartServiceTest {
 
     @Test
     public void testGetCartHappyPath() {
-        when(mockClient.getCart(mockId)).thenReturn(new Cart(mockId, asList(cartItem), mockId));
+        when(mockClient.getCart(mockId)).thenReturn(new Cart(mockId, new HashSet<>(asList(cartItem)), mockId));
         sut.getCart(mockId);
         verify(mockClient, times(1)).getCart(mockId);
     }

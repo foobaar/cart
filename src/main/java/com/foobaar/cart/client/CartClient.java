@@ -43,7 +43,9 @@ public class CartClient {
         try {
             cart =  repository.findByUserId(request.getUserId());
             if (cart == null) {
-                return repository.save(createNewCart(request));
+                Cart newCart = createNewCart(request);
+                repository.save(newCart);
+                return newCart;
             } else {
                 return updateAndSave(request, cart);
             }
@@ -54,7 +56,9 @@ public class CartClient {
     }
 
     private Cart updateAndSave(final UpsertCartRequest request, final Cart cart) {
+
         return cart;
+
     }
 
     private Cart createNewCart(final UpsertCartRequest request) {

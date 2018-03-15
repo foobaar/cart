@@ -22,5 +22,9 @@ public class UpsertCartResponse {
     public String getUserId() {
         return userId;
     }
+
+    public Set<CartItem> getCartItems() {
+        return cartItems;
+    }
 }
 

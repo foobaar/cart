@@ -19,6 +19,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.gorylenko.gradle-git-properties'
 apply plugin: 'checkstyle'
+apply plugin: "jacoco"
 
 
 def projectName='cart'
@@ -52,6 +53,18 @@ checkstyleTest {
 	source ='src/test/java'
 }
 
+jacoco {
+	toolVersion = "0.8.0"
+	reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled false
+		csv.enabled false
+		html.destination file("${buildDir}/jacocoHtml")
+	}
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')

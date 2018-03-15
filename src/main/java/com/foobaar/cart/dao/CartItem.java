@@ -1,25 +1,19 @@
 package com.foobaar.cart.dao;
 
 public class CartItem {
-    private String cartId;
-    private Item item;
-    private int quantity;
+    private final int quantity;
+    private final Item item;
 
-    public CartItem(final String cartId, final Item item, final int quantity) {
-        this.cartId = cartId;
-        this.item = item;
+    public CartItem(final Item item, final int quantity) {
         this.quantity = quantity;
-    }
-
-    public String getCartId() {
-        return cartId;
-    }
-
-    public Item getItem() {
-        return item;
+        this.item = item;
     }
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public Item getItem() {
+        return item;
     }
 }

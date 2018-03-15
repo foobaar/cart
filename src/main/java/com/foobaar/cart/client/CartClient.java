@@ -1,6 +1,8 @@
 package com.foobaar.cart.client;
 
+import com.foobaar.cart.dao.Cart;
 import com.foobaar.cart.dao.CartItem;
+import com.foobaar.cart.request.UpsertCartRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,7 +14,7 @@ public class CartClient {
         return null;
     }
 
-    public String createCart() {
+    public Cart upsert(final UpsertCartRequest request) {
         return null;
     }
 }

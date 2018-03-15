@@ -27,7 +27,7 @@ public class CartServiceTest {
     public void setUp() {
         item = new Item(UUID.randomUUID().toString(), "testItem",
                 "testDescription", ONE, "testSubCategory");
-        cartItem = new CartItem(mockId, item, quantityCount);
+        cartItem = new CartItem(item, quantityCount);
         mockClient = mock(CartClient.class);
         sut = new CartService(mockClient);
     }

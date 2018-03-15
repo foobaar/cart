@@ -7,6 +7,6 @@ spring:
     mongodb:
       host: ${MONGO_HOST:localhost}
       port: ${MONGO_PORT:27017}
-      username: ${MONGO_USER:testUser}
-      password: ${MONGO_PASSWORD:testPassword}
-      database: ${MONGO_DATABASE:testDatabase}
+      username: ${MONGO_USER:foouser}
+      password: ${MONGO_PASSWORD:foopwd}
+      database: ${MONGO_DATABASE:admin}

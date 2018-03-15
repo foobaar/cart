@@ -5,19 +5,19 @@ import com.foobaar.cart.dao.CartItem;
 import java.util.List;
 
 public class GetCartResponse {
-    private final String cartId;
+    private final String userId;
     private final List<CartItem> cartItems;
 
-    public GetCartResponse(final String cartId, final List<CartItem> cartItems) {
-        this.cartId = cartId;
+    public GetCartResponse(final String userId, final List<CartItem> cartItems) {
         this.cartItems = cartItems;
-    }
-
-    public String getCartId() {
-        return cartId;
+        this.userId = userId;
     }
 
     public List<CartItem> getCartItems() {
         return cartItems;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 }

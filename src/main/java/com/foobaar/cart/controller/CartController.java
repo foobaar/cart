@@ -40,11 +40,11 @@ public class CartController {
         return ok(EMPTY);
     }
 
-    @RequestMapping(value = "/{userId}", method = PUT, produces = "application/json;charset=UTF-8")
+    @RequestMapping(method = PUT, consumes = "application/json",
+            produces = "application/json;charset=UTF-8")
     public ResponseEntity<UpsertCartResponse> upsertCart(
-            @PathVariable("userId") final String userId,
             @RequestBody final UpsertCartRequest request) {
-        return ok(service.upsertCart(userId, request));
+        return ok(service.upsertCart(request));
     }
 
 }

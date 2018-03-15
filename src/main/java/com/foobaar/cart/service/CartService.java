@@ -17,16 +17,16 @@ public class CartService {
         this.client = client;
     }
 
-    public GetCartResponse getCart(final String id) {
-        return new GetCartResponse(id, client.getCart(id));
+    public GetCartResponse getCart(final String userId) {
+        return new GetCartResponse(userId, client.getCart(userId).getCartItems());
     }
 
-    public UpsertCartResponse upsertCart(final String userId, final UpsertCartRequest request) {
-        Cart cart = client.upsert(userId, request);
+    public UpsertCartResponse upsertCart(final UpsertCartRequest request) {
+        Cart cart = client.upsert(request);
         return new UpsertCartResponse(cart.getCartId(), cart.getUserId(), cart.getCartItems());
     }
 
     public void deleteCart(final String id) {
-
+        client.deleteCart(id);
     }
 }

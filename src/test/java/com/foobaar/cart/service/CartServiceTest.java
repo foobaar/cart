@@ -1,6 +1,7 @@
 package com.foobaar.cart.service;
 
 import com.foobaar.cart.client.CartClient;
+import com.foobaar.cart.dao.Cart;
 import com.foobaar.cart.dao.CartItem;
 import com.foobaar.cart.dao.Item;
 import org.junit.Before;
@@ -34,7 +35,7 @@ public class CartServiceTest {
 
     @Test
     public void testGetCartHappyPath() {
-        when(mockClient.getCart(mockId)).thenReturn(asList(cartItem));
+        when(mockClient.getCart(mockId)).thenReturn(new Cart(mockId, asList(cartItem), mockId));
         sut.getCart(mockId);
         verify(mockClient, times(1)).getCart(mockId);
     }

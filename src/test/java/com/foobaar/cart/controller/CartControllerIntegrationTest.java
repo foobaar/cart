@@ -20,6 +20,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.doNothing;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -32,6 +34,7 @@ public class CartControllerIntegrationTest {
     private CartService mockService;
     private CartController sut;
     private String id = UUID.randomUUID().toString();
+    private String cartId = UUID.randomUUID().toString();
 
     @Before
     public void setUp() {
@@ -55,6 +58,16 @@ public class CartControllerIntegrationTest {
         verifyNoMoreInteractions(mockService);
     }
 
+    @Test
+    public void deleteCartHappyPath() throws Exception {
+        doNothing().when(mockService).deleteCart(id);
+
+        mockMvc.perform(delete("/cart/" + id))
+                .andExpect(status().isOk());
+
+        verify(mockService, times(1)).deleteCart(id);
+        verifyNoMoreInteractions(mockService);
+    }
 }
 
 

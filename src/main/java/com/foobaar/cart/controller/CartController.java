@@ -35,14 +35,16 @@ public class CartController {
     }
 
     @RequestMapping(value = "/{userId}", method = DELETE)
-    public ResponseEntity<HttpEntity> deleteCart(@PathVariable("id") final String id) {
-        service.deleteCart(id);
+    public ResponseEntity<HttpEntity> deleteCart(@PathVariable("userId") final String userId) {
+        service.deleteCart(userId);
         return ok(EMPTY);
     }
 
     @RequestMapping(value = "/{userId}", method = PUT, produces = "application/json;charset=UTF-8")
-    public ResponseEntity<UpsertCartResponse> upsertCart(@RequestBody final UpsertCartRequest request) {
-        return ok(service.upsertCart(request));
+    public ResponseEntity<UpsertCartResponse> upsertCart(
+            @PathVariable("userId") final String userId,
+            @RequestBody final UpsertCartRequest request) {
+        return ok(service.upsertCart(userId, request));
     }
 
 }

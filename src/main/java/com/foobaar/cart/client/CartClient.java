@@ -14,7 +14,7 @@ public class CartClient {
         return null;
     }
 
-    public Cart upsert(final UpsertCartRequest request) {
+    public Cart upsert(final String userId, final UpsertCartRequest request) {
         return null;
     }
 }

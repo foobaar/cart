@@ -21,8 +21,8 @@ public class CartService {
         return new GetCartResponse(id, client.getCart(id));
     }
 
-    public UpsertCartResponse upsertCart(final UpsertCartRequest request) {
-        Cart cart = client.upsert(request);
+    public UpsertCartResponse upsertCart(final String userId, final UpsertCartRequest request) {
+        Cart cart = client.upsert(userId, request);
         return new UpsertCartResponse(cart.getCartId(), cart.getUserId(), cart.getCartItems());
     }
 
